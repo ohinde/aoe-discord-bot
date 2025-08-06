@@ -1,0 +1,16 @@
+{
+  "name": "aoe-discord-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot for playing AOE2 taunts in voice chat.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.18.0",
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.0.1"
+  }
+}
