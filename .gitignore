@@ -2,7 +2,3 @@ node_modules/
 .env
 *.log
 .DS_Store
-taunts/
-*.ogg
-*.mp3
-*.wav
