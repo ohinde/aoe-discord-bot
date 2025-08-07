@@ -4,10 +4,11 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package files for installing dependencies
-COPY package*.json ./
+COPY package.json ./
 
 # Install dependencies without dev dependencies
-RUN npm install --production
+RUN npm cache clean --force && \
+    npm install --production
 
 # Copy the remaining application files
 COPY . .
