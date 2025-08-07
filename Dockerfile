@@ -1,8 +1,5 @@
 FROM node:18-alpine
 
-# Install git to clone repositories if needed
-RUN apk add --no-cache git
-
 # Set working directory
 WORKDIR /app
 
