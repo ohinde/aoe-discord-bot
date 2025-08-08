@@ -1,17 +1,16 @@
-FROM node:18-alpine
+FROM node:lts-bookworm-slim
 
 # Set working directory
 WORKDIR /app
 
 # Copy package files for installing dependencies
-COPY package.json ./
+COPY package*.json ./
 
 # Install dependencies without dev dependencies
-RUN npm cache clean --force && \
-    npm install --production
+RUN npm install --production
 
 # Copy the remaining application files
 COPY . .
 
 # Start the bot directly
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
