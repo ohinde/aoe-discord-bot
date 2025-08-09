@@ -4,7 +4,10 @@
   "description": "A Discord bot for playing AOE2 taunts in voice chat.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +15,16 @@
     "@discordjs/voice": "^0.18.0",
     "discord.js": "^14.21.0",
     "dotenv": "^17.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "index.js"
+    ],
+    "coverageReporters": ["text", "lcov"],
+    "testMatch": ["**/test/**/*.test.js"]
   }
 }
