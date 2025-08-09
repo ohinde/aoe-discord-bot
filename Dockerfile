@@ -3,6 +3,12 @@ FROM node:lts-bookworm-slim
 # Set working directory
 WORKDIR /app
 
+# Install FFMPEG for audio support
+RUN apt-get update
+
+# Install FFMPEG for audio support
+RUN apt-get install ffmpeg -y
+
 # Copy package files for installing dependencies
 COPY package*.json ./
 

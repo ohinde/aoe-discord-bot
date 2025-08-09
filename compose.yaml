@@ -1,0 +1,11 @@
+services:
+  aoe-discord-bot:
+    build: .
+    container_name: aoe-discord-bot-debug
+    restart: unless-stopped
+    environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+      ENABLE_DISCORD_MENTIONS: ${ENABLE_DISCORD_MENTIONS}
+    volumes:
+      - ./logs:/app/logs
+networks: {}
