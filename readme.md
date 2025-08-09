@@ -6,7 +6,8 @@ A Discord bot that plays classic Age of Empires II taunts in voice channels. Sim
 
 - 🎮 Plays all 105 classic AOE2 taunts
 - 🔊 Automatically joins voice channels
-- 👥 **NEW**: Tag users to play taunts in their voice channel
+- 👥 Tag users to play taunts in their voice channel
+- 💬 **NEW**: Reply to messages to play taunts in the original author's voice channel
 - ⚙️ Configurable mention feature via environment variables
 - ⚡ Quick response - just type a number!
 - 🤖 Automatically disconnects after playing
@@ -15,7 +16,7 @@ A Discord bot that plays classic Age of Empires II taunts in voice channels. Sim
 
 ## Usage
 
-The bot supports two ways to play taunts:
+The bot supports three ways to play taunts:
 
 ### Method 1: Play in Your Own Channel
 1. Join a voice channel in your Discord server
@@ -41,10 +42,24 @@ The bot will:
 - Join their voice channel and play the taunt
 - Handle all errors gracefully with helpful messages
 
+### Method 3: Reply to Messages
+You can reply to someone's message with just a taunt number to play it in their voice channel:
+
+**Example:**
+1. Someone sends a message: "Good game!"
+2. You reply to their message with: `42`
+3. The bot will play taunt #42 in the original message author's voice channel
+
+The bot will:
+- Check if the original message author is in a voice channel
+- Join their voice channel and play the taunt
+- Perfect for responding to messages with classic AOE2 taunts!
+
 **Perfect for:**
 - Taunting friends in different voice channels
 - Responding to someone without having to join their channel
 - Remote taunting during games!
+- Quick taunt responses to messages!
 
 > **Note:** The mention feature can be enabled/disabled via the `ENABLE_DISCORD_MENTIONS` environment variable.
 
@@ -141,6 +156,7 @@ aoe2-discord-taunt-bot/
 ### Bot doesn't respond to numbers:
 - **Basic usage**: Make sure you're in a voice channel when typing
 - **Tagging usage**: Ensure the mentioned user exists and is in a voice channel
+- **Reply usage**: Ensure the person you're replying to exists and is in a voice channel
 - Verify the bot has proper permissions in your server
 - Check that taunt files exist in the `taunts/` folder with correct naming (1.ogg, 2.ogg, etc.)
 
