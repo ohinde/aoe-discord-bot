@@ -75,6 +75,41 @@ client.on('messageCreate', async (message) => {
         return;
     }
     
+    // Check for reply with taunt number format: reply to a message with just a number
+    if (message.reference && trimmedMessage.match(STANDARD_PATTERN)) {
+        try {
+            // Fetch the original message being replied to
+            const referencedMessage = await message.channel.messages.fetch(message.reference.messageId);
+            
+            // Get the member object of the original message author
+            const referencedMember = message.guild.members.cache.get(referencedMessage.author.id);
+            
+            // Check if the referenced user exists in the server
+            if (!referencedMember) {
+                await message.reply('Could not find the user you replied to.');
+                return;
+            }
+            
+            // Check if the referenced user is in a voice channel
+            if (!referencedMember.voice.channel) {
+                await message.reply(`${referencedMember.displayName} is not in a voice channel.`);
+                return;
+            }
+            
+            // Convert the message to an integer for taunt number
+            const tauntNumber = parseInt(trimmedMessage);
+            
+            // Play the taunt in the referenced user's voice channel
+            await playTaunt(message, tauntNumber, referencedMember.voice.channel);
+            
+            return;
+        } catch (error) {
+            console.error('Error fetching referenced message:', error);
+            await message.reply('Could not find the message you replied to.');
+            return;
+        }
+    }
+    
     // Check if message contains only digits and user is in voice channel
     if (trimmedMessage.match(STANDARD_PATTERN) == null) return;
     
